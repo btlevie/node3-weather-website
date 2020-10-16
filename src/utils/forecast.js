@@ -12,10 +12,16 @@ const forecast = (lat, long, callback) => {
         } else { 
             const currentTemp = response.body.current.temperature
             const feelsLike = response.body.current.feelslike
+            const icon = response.body.current.weather_icons[0]
+            const windSpeed = response.body.current.wind_speed
+            const windDir = response.body.current.wind_dir
             callback(undefined, {
                 currentTemp,
                 feelsLike,
-                string: response.body.current.weather_descriptions[0] + '. It is currently ' + currentTemp + ' degrees out. It feels like ' + feelsLike + ' degrees out.'
+                string: response.body.current.weather_descriptions[0] + '. It is currently ' + currentTemp + ' degrees out. It feels like ' + feelsLike + ' degrees out.',
+                icon,
+                windSpeed,
+                windDir
             })
         }
     })
